@@ -5,9 +5,15 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
-    docker:
-      image: circleci/php:7.1-node-browsers
+  # build:
+  #   docker:
+  #     image: circleci/php:7.1-node-browsers
+  #     steps:
+
+  #     - checkout
+  #     - run: sudo apt install -y libsqlite3-dev zlib1g-dev
+  #     - run: sudo docker-php-ext-install zip
+  #     - run: sudo composer self-update
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
