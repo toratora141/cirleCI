@@ -16,10 +16,10 @@ jobs:
       #     name: Docker php extensions install
       - run: sudo docker-php-ext-install zip
       - run: sudo composer self-update
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "composer.json" }}
-            - v1-dependencies-
+      - save_cache:
+          key: v1-composer-{{ checksum "package-lock.json" }}
+          paths:
+            - vendor
       - run:
           name: Install PHP libraries
           command: composer install -n --prefer-dist
