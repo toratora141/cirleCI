@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Uupdate apt-get
+          name: Update apt-get
           command: sudo apt-get update
       - run: 
           name: Docker php extensions install
