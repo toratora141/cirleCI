@@ -6,7 +6,7 @@ jobs:
       - image: circleci/mariadb:10.4
     # environment:
     #   - DB_CONNECTION: circle_testing
-    # working_directory: ~/circleci
+    working_directory: ~/circleci
     steps:
       - checkout
       - run:
@@ -14,11 +14,10 @@ jobs:
           command: sudo apt-get update
       - run:
           name: Docker php extensions install
-          command: sudo docker-php-ext-install zip
-          # command: sudo composer self-update
+          command: sudo docker-php-ext-install pdo_mysql
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-{{ checksum "backend/composer.json" }}
             - v1-dependencies-
       - run:
           name: Install PHP libraries
