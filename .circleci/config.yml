@@ -3,21 +3,21 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.3.0-node-browsers
-    # working_directory: ~/circleci
+      - image: circleci/mariadb:10.4
+    environment:
+      - DB_CONNECTION: circle_testing
+    working_directory: ~/ci-demo
     steps:
       - checkout
       - run:
           name: Update apt-get
           command: sudo apt-get update
-      - run: 
+      - run:
           name: Docker php extensions install
           command: sudo docker-php-ext-install pdo_mysql
-      - run: 
-          name: ls
-          command: ls
       - restore_cache:
-          keys: 
-            - v1-dependencies-{{ checksum "/home/circleci/src/composer.json" }}
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
             - v1-dependencies-
       - run:
           name: Install PHP libraries
@@ -29,4 +29,3 @@ jobs:
       - run:
           name: Run PHPUnit
           command: vendor/bin/phpunit
-          
