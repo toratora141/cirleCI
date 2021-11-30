@@ -12,10 +12,10 @@ jobs:
       - run:
           name: Update apt-get
           command: sudo apt-get update
-      - run:
-          name: Docker php extensions install
-          command: sudo docker-php-ext-install zip
-          command: sudo composer self-update
+      # - run:
+      #     name: Docker php extensions install
+      - run: sudo docker-php-ext-install zip
+      - run: sudo composer self-update
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
