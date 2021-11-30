@@ -18,7 +18,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
             - v1-dependencies-
-      - run:
+      - run: rm -rf vendor/
+      - run: rm composer.lock
+      - run: composer global clearcache
+      - run: 
           working_directory: src/laravelapp
           name: Install PHP libraries
           command: composer install -n --prefer-dist
