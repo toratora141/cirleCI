@@ -31,4 +31,4 @@ jobs:
           key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
       - run:
           name: Run PHPUnit
-          command: src/laravel/vendor/bin/phpunit
+          command: src/laravelapp/vendor/bin/phpunit
