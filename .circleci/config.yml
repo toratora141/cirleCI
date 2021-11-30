@@ -6,8 +6,23 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Uupdate apt-get
+          command: sudo apt-get update
+      - run: 
+          name: Docker php extensions install
+          command: sudo docker-php-ext-install pdo_mysql
+      - restore_cache:
+          keys: 
+            - v1-dependencies-{{ checksum "composer.json"}}
+            - v1-dependencies-
       - run:
-          name: Print the Current Time
-          command: date
+          name: Install PHP libraries
+          command: composer install -n --prefer-dist
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+      - run:
+          name: Run PHPUnit
+          command: vendor/bin/phpunit
+          
