@@ -18,7 +18,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
             - v1-dependencies-
-      - run: rm -rf src/laravelapp/vendor/
+      # - run: rm -rf src/laravelapp/vendor/
       - run: rm src/laravelapp/composer.lock
       - run: composer global clearcache
       - run: 
