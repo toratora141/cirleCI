@@ -15,6 +15,7 @@ jobs:
       - run:
           name: Docker php extensions install
           command: sudo docker-php-ext-install zip
+          command: sudo composer self-update
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
