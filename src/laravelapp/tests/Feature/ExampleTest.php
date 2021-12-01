@@ -22,6 +22,6 @@ class ExampleTest extends TestCase
             'password_confirmation' => 'password',
         ])
             ->assertStatus(302);
-        $this->assertDatabaseHas('users', ['email' => 'email@example.com']);
+        $this->assertDatabaseHas('users', ['email' => 'email@example.co']);
     }
 }
